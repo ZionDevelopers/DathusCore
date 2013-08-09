@@ -1,31 +1,32 @@
-/* 
- _______   ___________    ____  _______  __        ______   .______    _______  _______     
-|       \ |   ____\   \  /   / |   ____||  |      /  __  \  |   _  \  |   ____||       \    
-|  .--.  ||  |__   \   \/   /  |  |__   |  |     |  |  |  | |  |_)  | |  |__   |  .--.  |   
-|  |  |  ||   __|   \      /   |   __|  |  |     |  |  |  | |   ___/  |   __|  |  |  |  |   
-|  '--'  ||  |____   \    /    |  |____ |  `----.|  `--'  | |  |      |  |____ |  '--'  |   
-|_______/ |_______|   \__/     |_______||_______| \______/  | _|      |_______||_______/    
-                                                                                            
-                              .______   ____    ____                                        
-                              |   _  \  \   \  /   /                                        
-                              |  |_)  |  \   \/   /                                         
-                              |   _  <    \_    _/                                          
-                              |  |_)  |     |  |                                            
-                              |______/      |__|                                            
-                                                                                            
-.__   __.  __________   ___  __    __       _______.    ____ .______   .______       ____   
-|  \ |  | |   ____\  \ /  / |  |  |  |     /       |   |    ||   _  \  |   _  \     |    |  
-|   \|  | |  |__   \  V  /  |  |  |  |    |   (----`   |  |-`|  |_)  | |  |_)  |    `-|  |  
-|  . `  | |   __|   >   <   |  |  |  |     \   \       |  |  |   _  <  |      /       |  |  
-|  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  |  |  |_)  | |  |\  \----.  |  |  
-|__| \__| |_______/__/ \__\  \______/  |_______/       |  |-.|______/  | _| `._____|.-|  |  
-                                                       |____|                       
+--[[ 
+.__   __.  __________   ___  __    __       _______.     ______   ______   .______       _______ 
+|  \ |  | |   ____\  \ /  / |  |  |  |     /       |    /      | /  __  \  |   _  \     |   ____|
+|   \|  | |  |__   \  V  /  |  |  |  |    |   (----`   |  ,----'|  |  |  | |  |_)  |    |  |__   
+|  . `  | |   __|   >   <   |  |  |  |     \   \       |  |     |  |  |  | |      /     |   __|  
+|  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  `----.|  `--'  | |  |\  \----.|  |____ 
+|__| \__| |_______/__/ \__\  \______/  |_______/        \______| \______/  | _| `._____||_______|
+                                                                
+Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+ 
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-		Steam Profile: http://steamcommunity.com/profiles/76561197983103320	
 
+Version: 1.3.0
+Author: Nexus [BR]
 Created: 05-11-2012
-Updated: 27-12-2012	08:03 PM	   
-*/
+Updated: 09-08-2013	08:03 PM
+]]--
 
 if SERVER then
 	--Loading Messages
@@ -40,13 +41,13 @@ if SERVER then
 	local FallDamageList = {}
 	
 	function GetFallDamage( ply, flFallSpeed )
-		if( FallDamageList[ply:UniqueID()] == "ENABLE" || not FallDamageList[ply:UniqueID()] ) then -- realistic fall damage is on
-			if( GetConVarNumber( "mp_falldamage" ) > 0 ) then -- realistic fall damage is on
+		if FallDamageList[ply:UniqueID()] == "ENABLE" or not FallDamageList[ply:UniqueID()] then -- realistic fall damage is on
+			if GetConVarNumber( "mp_falldamage" ) > 0 then -- realistic fall damage is on
 				return flFallSpeed * 0.225; -- near the Source SDK value
 			end
 			
 			return 10
-		elseif ( FallDamageList[ply:UniqueID()] == "DISABLE") then
+		elseif FallDamageList[ply:UniqueID()] == "DISABLE" then
 			return 0
 		end	
 	end
@@ -71,9 +72,9 @@ if SERVER then
 	
 	local function Animate( Ent, Animation )
 		--If Entity is Valid and Animation are not Empty
-		if (Ent:IsValid() and Animation != "") then
+		if Ent:IsValid() and Animation ~= "" then
 			--If Entity is not animated
-			if !Ent.Animated then
+			if not Ent.Animated then
 				-- This must be run once on entities that will be animated
 				Ent.Animated = true
 				Ent.AutomaticFrameAdvance = true
@@ -113,14 +114,14 @@ if SERVER then
 	Msg( "|| Loading...                       ||\n" )
 
 
-	/*
+	--[[
 	.___________. _______  __       _______ .______     ______   .______     .___________.
 	|           ||   ____||  |     |   ____||   _  \   /  __  \  |   _  \    |           |
 	`---|  |----`|  |__   |  |     |  |__   |  |_)  | |  |  |  | |  |_)  |   `---|  |----`
 		|  |     |   __|  |  |     |   __|  |   ___/  |  |  |  | |      /        |  |     
 		|  |     |  |____ |  `----.|  |____ |  |      |  `--'  | |  |\  \----.   |  |     
 		|__|     |_______||_______||_______|| _|       \______/  | _| `._____|   |__|     
-	 */
+	]]--
 
 
 	--Log Loading Message
@@ -144,7 +145,7 @@ if SERVER then
 			--If is Admin quit with true
 			if self.player:IsAdmin() then isAdmin = true end
 			
-			if !isAdmin then
+			if not isAdmin then
 				--Set Player In ReUseList
 				if not ReUseList[self.player:UniqueID()] then
 					ReUseList[self.player:UniqueID()] = -1
@@ -162,7 +163,7 @@ if SERVER then
 					--Set ReUseList Timeout
 					ReUseList[self.player:UniqueID()] = CurTime() + AntiSpamTimeout
 					-- If This is a Player
-					if !this:IsPlayer() then
+					if not this:IsPlayer() then
 						Ent = this.player
 					end
 					-- Check if is Allowed
@@ -172,7 +173,7 @@ if SERVER then
 		end	
 		
 		-- If Player is Admin or passed on AntiSpam and Prop Protection
-		if ( isAdmin || ( antiSpam && propProtection ) ) then
+		if isAdmin || ( antiSpam && propProtection ) then
 			--If is Player
 			if this:IsPlayer() then
 				--If Player is In Vehicle
@@ -186,7 +187,7 @@ if SERVER then
 		end		
 	end
 
-	/*
+	--[[
 	.______    __           ___   ____    ____  _______ .______          __    __  .__   __.  __    ______      __    __   _______     __   _______  
 	|   _  \  |  |         /   \  \   \  /   / |   ____||   _  \        |  |  |  | |  \ |  | |  |  /  __  \    |  |  |  | |   ____|   |  | |       \ 
 	|  |_)  | |  |        /  ^  \  \   \/   /  |  |__   |  |_)  |       |  |  |  | |   \|  | |  | |  |  |  |   |  |  |  | |  |__      |  | |  .--.  |
@@ -194,7 +195,7 @@ if SERVER then
 	|  |      |  `----. /  _____  \   |  |     |  |____ |  |\  \----.   |  `--'  | |  |\   | |  | |  `--'  '--.|  `--'  | |  |____    |  | |  '--'  |
 	| _|      |_______|/__/     \__\  |__|     |_______|| _| `._____|    \______/  |__| \__| |__|  \_____\_____\\______/  |_______|   |__| |_______/ 
 																																			  
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:playerUniqueId()")
@@ -212,14 +213,14 @@ if SERVER then
 		return this:UniqueID()
 	end
 
-	/*
+	--[[
 		 ___      .______   .______    __      ____    ____    .______    __           ___   ____    ____  _______ .______          _______   ______   .______        ______  _______ 
 		/   \     |   _  \  |   _  \  |  |     \   \  /   /    |   _  \  |  |         /   \  \   \  /   / |   ____||   _  \        |   ____| /  __  \  |   _  \      /      ||   ____|
 	   /  ^  \    |  |_)  | |  |_)  | |  |      \   \/   /     |  |_)  | |  |        /  ^  \  \   \/   /  |  |__   |  |_)  |       |  |__   |  |  |  | |  |_)  |    |  ,----'|  |__   
 	  /  /_\  \   |   ___/  |   ___/  |  |       \_    _/      |   ___/  |  |       /  /_\  \  \_    _/   |   __|  |      /        |   __|  |  |  |  | |      /     |  |     |   __|  
 	 /  _____  \  |  |      |  |      |  `----.    |  |        |  |      |  `----. /  _____  \   |  |     |  |____ |  |\  \----.   |  |     |  `--'  | |  |\  \----.|  `----.|  |____ 
 	/__/     \__\ | _|      | _|      |_______|    |__|        | _|      |_______|/__/     \__\  |__|     |_______|| _| `._____|   |__|      \______/  | _| `._____| \______||_______|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:applyPlayerForce(Vector)")
@@ -263,14 +264,14 @@ if SERVER then
 		end			
 	end
 
-	/*
+	--[[
 	 __    __       ___           _______.   .__   __.   ______        ______   ______    __       __       __   _______   _______         ___       __       __      
 	|  |  |  |     /   \         /       |   |  \ |  |  /  __  \      /      | /  __  \  |  |     |  |     |  | |       \ |   ____|       /   \     |  |     |  |     
 	|  |__|  |    /  ^  \       |   (----`   |   \|  | |  |  |  |    |  ,----'|  |  |  | |  |     |  |     |  | |  .--.  ||  |__         /  ^  \    |  |     |  |     
 	|   __   |   /  /_\  \       \   \       |  . `  | |  |  |  |    |  |     |  |  |  | |  |     |  |     |  | |  |  |  ||   __|       /  /_\  \   |  |     |  |     
 	|  |  |  |  /  _____  \  .----)   |      |  |\   | |  `--'  |    |  `----.|  `--'  | |  `----.|  `----.|  | |  '--'  ||  |____     /  _____  \  |  `----.|  `----.
 	|__|  |__| /__/     \__\ |_______/       |__| \__|  \______/      \______| \______/  |_______||_______||__| |_______/ |_______|   /__/     \__\ |_______||_______|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:hasNoCollideAll()")
@@ -287,14 +288,14 @@ if SERVER then
 		return util.tobool(this:GetCollisionGroup() == COLLISION_GROUP_WORLD)
 	end
 
-	/*
+	--[[
 		 _______. _______ .___________.   .__   __.   ______        ______   ______    __       __       __   _______   _______         ___       __       __      
 		/       ||   ____||           |   |  \ |  |  /  __  \      /      | /  __  \  |  |     |  |     |  | |       \ |   ____|       /   \     |  |     |  |     
 	   |   (----`|  |__   `---|  |----`   |   \|  | |  |  |  |    |  ,----'|  |  |  | |  |     |  |     |  | |  .--.  ||  |__         /  ^  \    |  |     |  |     
 		\   \    |   __|      |  |        |  . `  | |  |  |  |    |  |     |  |  |  | |  |     |  |     |  | |  |  |  ||   __|       /  /_\  \   |  |     |  |     
 	.----)   |   |  |____     |  |        |  |\   | |  `--'  |    |  `----.|  `--'  | |  `----.|  `----.|  | |  '--'  ||  |____     /  _____  \  |  `----.|  `----.
 	|_______/    |_______|    |__|        |__| \__|  \______/      \______| \______/  |_______||_______||__| |_______/ |_______|   /__/     \__\ |_______||_______|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:setCollideAll()")
@@ -332,14 +333,14 @@ if SERVER then
 		end		
 	end
 
-	/*
+	--[[
 	.______       _______ .___  ___.   ______   ____    ____  _______    .__   __.   ______        ______   ______    __       __       __   _______   _______         ___       __       __      
 	|   _  \     |   ____||   \/   |  /  __  \  \   \  /   / |   ____|   |  \ |  |  /  __  \      /      | /  __  \  |  |     |  |     |  | |       \ |   ____|       /   \     |  |     |  |     
 	|  |_)  |    |  |__   |  \  /  | |  |  |  |  \   \/   /  |  |__      |   \|  | |  |  |  |    |  ,----'|  |  |  | |  |     |  |     |  | |  .--.  ||  |__         /  ^  \    |  |     |  |     
 	|      /     |   __|  |  |\/|  | |  |  |  |   \      /   |   __|     |  . `  | |  |  |  |    |  |     |  |  |  | |  |     |  |     |  | |  |  |  ||   __|       /  /_\  \   |  |     |  |     
 	|  |\  \----.|  |____ |  |  |  | |  `--'  |    \    /    |  |____    |  |\   | |  `--'  |    |  `----.|  `--'  | |  `----.|  `----.|  | |  '--'  ||  |____     /  _____  \  |  `----.|  `----.
 	| _| `._____||_______||__|  |__|  \______/      \__/     |_______|   |__| \__|  \______/      \______| \______/  |_______||_______||__| |_______/ |_______|   /__/     \__\ |_______||_______|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:removeNoCollideAll()")
@@ -377,14 +378,14 @@ if SERVER then
 		end			
 	end
 
-	/*
+	--[[
 		 _______. _______ .___________.     ______   ____    __    ____ .__   __.  _______ .______      
 		/       ||   ____||           |    /  __  \  \   \  /  \  /   / |  \ |  | |   ____||   _  \     
 	   |   (----`|  |__   `---|  |----`   |  |  |  |  \   \/    \/   /  |   \|  | |  |__   |  |_)  |    
 		\   \    |   __|      |  |        |  |  |  |   \            /   |  . `  | |   __|  |      /     
 	.----)   |   |  |____     |  |        |  `--'  |    \    /\    /    |  |\   | |  |____ |  |\  \----.
 	|_______/    |_______|    |__|         \______/      \__/  \__/     |__| \__| |_______|| _| `._____|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:setOwner(Entity)")
@@ -409,14 +410,14 @@ if SERVER then
 		end	
 	end
 
-	/*
+	--[[
 	 __    _______ .__   __.  __  .___________. _______ 
 	|  |  /  _____||  \ |  | |  | |           ||   ____|
 	|  | |  |  __  |   \|  | |  | `---|  |----`|  |__   
 	|  | |  | |_ | |  . `  | |  |     |  |     |   __|  
 	|  | |  |__| | |  |\   | |  |     |  |     |  |____ 
 	|__|  \______| |__| \__| |__|     |__|     |_______|
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:ignite()")
@@ -454,14 +455,14 @@ if SERVER then
 		end		
 	end
 
-	/*
+	--[[
 	 _______ ___   ___ .___________. __  .__   __.   _______  __    __   __       _______. __    __  
 	|   ____|\  \ /  / |           ||  | |  \ |  |  /  _____||  |  |  | |  |     /       ||  |  |  | 
 	|  |__    \  V  /  `---|  |----`|  | |   \|  | |  |  __  |  |  |  | |  |    |   (----`|  |__|  | 
 	|   __|    >   <       |  |     |  | |  . `  | |  | |_ | |  |  |  | |  |     \   \    |   __   | 
 	|  |____  /  .  \      |  |     |  | |  |\   | |  |__| | |  `--'  | |  | .----)   |   |  |  |  | 
 	|_______|/__/ \__\     |__|     |__| |__| \__|  \______|  \______/  |__| |_______/    |__|  |__| 
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:extinguish()")
@@ -502,14 +503,14 @@ if SERVER then
 		end	
 	end
 
-	/*
+	--[[
 		 _______. _______ .___________. __    __   _______      ___       __      .___________. __    __  
 		/       ||   ____||           ||  |  |  | |   ____|    /   \     |  |     |           ||  |  |  | 
 	   |   (----`|  |__   `---|  |----`|  |__|  | |  |__      /  ^  \    |  |     `---|  |----`|  |__|  | 
 		\   \    |   __|      |  |     |   __   | |   __|    /  /_\  \   |  |         |  |     |   __   | 
 	.----)   |   |  |____     |  |     |  |  |  | |  |____  /  _____  \  |  `----.    |  |     |  |  |  | 
 	|_______/    |_______|    |__|     |__|  |__| |_______|/__/     \__\ |_______|    |__|     |__|  |__| 
-	*/
+	]]--
 
 		--Log Loading Message
 	loadingLog("Entity:setHealth(Number)")
@@ -531,14 +532,14 @@ if SERVER then
 	end
 
 
-	/*
+	--[[
 	.___________.    ___       __  ___  _______     _______       ___      .___  ___.      ___       _______  _______ 
 	|           |   /   \     |  |/  / |   ____|   |       \     /   \     |   \/   |     /   \     /  _____||   ____|
 	`---|  |----`  /  ^  \    |  '  /  |  |__      |  .--.  |   /  ^  \    |  \  /  |    /  ^  \   |  |  __  |  |__   
 		|  |      /  /_\  \   |    <   |   __|     |  |  |  |  /  /_\  \   |  |\/|  |   /  /_\  \  |  | |_ | |   __|  
 		|  |     /  _____  \  |  .  \  |  |____    |  '--'  | /  _____  \  |  |  |  |  /  _____  \ |  |__| | |  |____ 
 		|__|    /__/     \__\ |__|\__\ |_______|   |_______/ /__/     \__\ |__|  |__| /__/     \__\ \______| |_______|
-	*/
+	]]--
 
 		--Log Loading Message
 	loadingLog("Entity:takeDamage(Number)")
@@ -596,14 +597,14 @@ if SERVER then
 		end	
 	end
 
-	/*
+	--[[
 		 _______. _______ .___________.
 		/       ||   ____||           |
 	   |   (----`|  |__   `---|  |----`
 		\   \    |   __|      |  |     
 	.----)   |   |  |____     |  |     
 	|_______/    |_______|    |__| 
-	*/
+	]]--
 
 	--Log Loading Message
 	loadingLog("Entity:set(String, String)")
@@ -636,14 +637,14 @@ if SERVER then
 		end
 	end
 
-	/*
+	--[[
 			   __       _______.  ______   .__   __. 
 		  |  |     /       | /  __  \  |  \ |  | 
 		  |  |    |   (----`|  |  |  | |   \|  | 
 	.--.  |  |     \   \    |  |  |  | |  . `  | 
 	|  `--'  | .----)   |   |  `--'  | |  |\   | 
 	 \______/  |_______/     \______/  |__| \__|
-	*/
+	]]--
 	
 	--Log Loading Message
 	loadingLog("tableToJson(Table)")
@@ -670,14 +671,14 @@ if SERVER then
 	end
 	
 	
-	/*
+	--[[
 		 ___      .__   __.  __  .___  ___.      ___   .___________. _______ 
 		/   \     |  \ |  | |  | |   \/   |     /   \  |           ||   ____|
 	   /  ^  \    |   \|  | |  | |  \  /  |    /  ^  \ `---|  |----`|  |__   
 	  /  /_\  \   |  . `  | |  | |  |\/|  |   /  /_\  \    |  |     |   __|  
 	 /  _____  \  |  |\   | |  | |  |  |  |  /  _____  \   |  |     |  |____ 
 	/__/     \__\ |__| \__| |__| |__|  |__| /__/     \__\  |__|     |_______|
-	*/
+	]]--
 	
 	--Log Loading Message
 	loadingLog("Entity:animate(Number)")
@@ -837,14 +838,14 @@ if SERVER then
 		end
 	end
 
-	/*
+	--[[
 	 _______    ___       __       __          _______       ___      .___  ___.      ___       _______  _______ 
 	|   ____|  /   \     |  |     |  |        |       \     /   \     |   \/   |     /   \     /  _____||   ____|
 	|  |__    /  ^  \    |  |     |  |        |  .--.  |   /  ^  \    |  \  /  |    /  ^  \   |  |  __  |  |__   
 	|   __|  /  /_\  \   |  |     |  |        |  |  |  |  /  /_\  \   |  |\/|  |   /  /_\  \  |  | |_ | |   __|  
 	|  |    /  _____  \  |  `----.|  `----.   |  '--'  | /  _____  \  |  |  |  |  /  _____  \ |  |__| | |  |____ 
 	|__|   /__/     \__\ |_______||_______|   |_______/ /__/     \__\ |__|  |__| /__/     \__\ \______| |_______|
-	*/
+	]]--
 	
 	--Log Loading Message
 	loadingLog("Entity:disableFallDamage()")
@@ -918,7 +919,7 @@ if SERVER then
 		end			
 	end
 	
-	/*
+	--[[
 	 _______   _______ .______       __    __   __    __   _______          _______. _______ .___________.   .______    __          ___   ____    ____  _______ .______      
 	|   ____| /  _____||   _  \     |  |  |  | |  |  |  | |       \        /       ||   ____||           |   |   _  \  |  |        /   \  \   \  /   / |   ____||   _  \     
 	|  |__   |  |  __  |  |_)  |    |  |__|  | |  |  |  | |  .--.  |      |   (----`|  |__   `---|  |----`   |  |_)  | |  |       /  ^  \  \   \/   /  |  |__   |  |_)  |    
@@ -926,7 +927,7 @@ if SERVER then
 	|  |____ |  |__| | |  |         |  |  |  | |  `--'  | |  '--'  |   .----)   |   |  |____     |  |        |  |      |  `----./  _____  \   |  |     |  |____ |  |\  \----.
 	|_______| \______| | _|         |__|  |__|  \______/  |_______/    |_______/    |_______|    |__|        | _|      |_______/__/     \__\  |__|     |_______|| _| `._____|
 																																												
-	*/
+	]]--
 		
 	--Log Loading Message
 	loadingLog("Entity:egpHUDSetPlayer(Entity)")
@@ -942,13 +943,13 @@ if SERVER then
 		local Ent = this
 		
 		--If entity is not Valid
-		if this:IsValid() && !this:IsPlayer() then
+		if this:IsValid() and not this:IsPlayer() then
 			--If Game is Single Player then Return True
 			if game.SinglePlayer() then isAdmin = true end
 			--If is Admin quit with true
 			if self.player:IsAdmin() then isAdmin = true end
 			
-			if !isAdmin then
+			if not isAdmin then
 				-- If This is a Player
 				if !this:IsPlayer() then
 					Ent = this.player
