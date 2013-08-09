@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"		"Nexus Core"
+	"version"	"1.2"
+	"up_date"	"03/12/2012"
+	"author_name"	"Nexus [BR]"
+	"author_email"	"julio@juliocesar.me"
+	"author_url"	"www.juliocesar.me"
+	
+	"info"		"E2 Functions"
+}
