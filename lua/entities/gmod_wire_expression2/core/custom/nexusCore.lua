@@ -396,17 +396,16 @@ if SERVER then
 	--Setup E2 Function
 	e2function void entity:setOwner(entity player)
 		--If is not valid then quit
-		if !this:IsValid() then return end 	
+		if not this:IsValid() then return end 	
 		--If is player then quit
 		if this:IsPlayer() then return end 
 		--If Player is Really a player then quit
-		if !player:IsPlayer() then return end 
+		if not player:IsPlayer() then return end 
 
 		--Check if Player is not Admin and Game is Not SinglePlayer
 		if self.player:IsAdmin() and !game.SinglePlayer() then 
-			--Set Owner
-			--this.Owner = player
-			this:SetPlayer(player)
+			--Set Owner			
+			this:SetOwner(player)
 		end	
 	end
 
@@ -556,13 +555,13 @@ if SERVER then
 		local Ent = this
 		
 		--If entity is not Valid
-		if this:IsValid() && !this:IsPlayer() then
+		if this:IsValid() and not this:IsPlayer() then
 			--If Game is Single Player then Return True
 			if game.SinglePlayer() then isAdmin = true end
 			--If is Admin quit with true
 			if self.player:IsAdmin() then isAdmin = true end
 			
-			if !isAdmin then
+			if not isAdmin then
 				--Set Player In ReUseList
 				if not ReUseList[self.player:UniqueID()] then
 					ReUseList[self.player:UniqueID()] = -1
@@ -581,7 +580,7 @@ if SERVER then
 					ReUseList[self.player:UniqueID()] = CurTime() + AntiSpamTimeout
 					
 					-- If This is a Player
-					if !this:IsPlayer() then
+					if not this:IsPlayer() then
 						Ent = this.player
 					end
 					-- Check if is Allowed
@@ -591,7 +590,7 @@ if SERVER then
 		end	
 		
 		-- If Player is Admin or passed on AntiSpam and Prop Protection
-		if ( isAdmin || ( antiSpam && propProtection ) ) then
+		if ( isAdmin or ( antiSpam && propProtection ) ) then
 			--Take Damage
 			this:TakeDamage( damageAmount, self.player, self )
 		end	
