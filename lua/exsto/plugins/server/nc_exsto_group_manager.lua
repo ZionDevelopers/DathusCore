@@ -6,7 +6,7 @@
 |  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  `----.|  `--'  | |  |\  \----.|  |____ 
 |__| \__| |_______/__/ \__\  \______/  |_______/        \______| \______/  | _| `._____||_______|
                                                                 
-Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+Copyright (c) 2013 .Ż. Nexus ▪ bzg® <http://www.nexusbr.net>
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ PLUGIN:SetInfo({
 	Name = "Nexus Core",
 	ID = "nexuscore",
 	Desc = "Give access to Expression 2 Admin Functions.",
-	Owner = "Nexus [BR]",
+	Owner = ".Ż. Nexus ▪ bzg®",
 	CleanUnload = true;
 } )
 

@@ -3,7 +3,7 @@
 	"name"		"Nexus Core"
 	"version"	"1.2"
 	"up_date"	"03/12/2012"
-	"author_name"	"Nexus [BR]"
+	"author_name"	".Ż. Nexus ▪ bzg®"
 	"author_email"	"julio@juliocesar.me"
 	"author_url"	"www.juliocesar.me"
 	

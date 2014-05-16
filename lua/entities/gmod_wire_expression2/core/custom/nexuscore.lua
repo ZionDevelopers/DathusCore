@@ -6,7 +6,7 @@
 |  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  `----.|  `--'  | |  |\  \----.|  |____ 
 |__| \__| |_______/__/ \__\  \______/  |_______/        \______| \______/  | _| `._____||_______|
                                                                 
-Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+Copyright (c) 2013 .Ż. Nexus ▪ bzg® <http://www.nexusbr.net>
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ Updated: 15-05-2014 09:09 PM (-03:00 GMT)
 if SERVER then
 	--Loading Messages
 	Msg( "/====================================\\\n")
-	Msg( "||     Nexus Core (E2 Functions)    ||\n" )
+	Msg( "||         Nexus Core v1.3.1        ||\n" )
 	Msg( "||----------------------------------||\n" )
 	
 	-- Register
@@ -667,7 +667,7 @@ if SERVER then
 		if not this:IsValid() then return end 
 		
 		--Check if Player is not Admin and Game is Not SinglePlayer
-		if self.player:IsAdmin() or game.SinglePlayer() then 
+		if self.player:IsSuperAdmin() or game.SinglePlayer() then 
 			this:Fire( input, param )
 		end
 	end

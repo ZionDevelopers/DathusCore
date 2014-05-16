@@ -6,7 +6,7 @@
 |  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  `----.|  `--'  | |  |\  \----.|  |____ 
 |__| \__| |_______/__/ \__\  \______/  |_______/        \______| \______/  | _| `._____||_______|
                                                                 
-Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+Copyright (c) 2013 .Ż. Nexus ▪ bzg® <http://www.nexusbr.net>
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,8 +38,8 @@ E2Helper.Descriptions["setOwner"] = "Set Entity Owner (Admin ONLY)"
 E2Helper.Descriptions["ignite"] = "Ignite Entity"
 E2Helper.Descriptions["extinguish"] = "Extinguish entity"
 E2Helper.Descriptions["setHealth"] = "Set Player Health (Admin ONLY)"
-E2Helper.Descriptions["takeDamage"] = "Take Damage"
-E2Helper.Descriptions["set"] = "Set Property of Entity"
+E2Helper.Descriptions["takeDamage"] = "Take Damage on entity (Like Props), Not on players"
+E2Helper.Descriptions["set"] = "Set a Property of Entity (SuperAdmin ONLY)"
 E2Helper.Descriptions["tableToJson"] = "Convert Table to JSON (JavaScript Object Notation)"
 E2Helper.Descriptions["jsonToTable"] = "Convert JSON to Table (JavaScript Object Notation)"
 E2Helper.Descriptions["animate"] = "Animate a Prop by Setting a Sequence"

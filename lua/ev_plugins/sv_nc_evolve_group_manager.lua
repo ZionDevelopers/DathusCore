@@ -6,7 +6,7 @@
 |  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  `----.|  `--'  | |  |\  \----.|  |____ 
 |__| \__| |_______/__/ \__\  \______/  |_______/        \______| \______/  | _| `._____||_______|
                                                                 
-Copyright (c) 2013 Nexus [BR] <http://www.nexusbr.net>
+Copyright (c) 2013 .Ż. Nexus ▪ bzg® <http://www.nexusbr.net>
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ Updated: 15-05-2014 09:09 PM (-03:00 GMT)
 local PLUGIN = {}
 PLUGIN.Title = "Nexus Core"
 PLUGIN.Description = "Give access to Expression 2 Admin Functions."
-PLUGIN.Author = "Nexus [BR]"
+PLUGIN.Author = ".Ż. Nexus ▪ bzg®"
 PLUGIN.Privileges = { "Nexus Core Access" }
 
 evolve:RegisterPlugin( PLUGIN )
