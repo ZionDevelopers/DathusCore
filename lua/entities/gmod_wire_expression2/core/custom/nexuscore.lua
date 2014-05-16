@@ -69,7 +69,7 @@ if SERVER then
 		--Log Messsage
 		Msg( "||  " .. text .. "||\n" )
 	end
-	
+		
 	local function Animate( Ent, Animation )
 		--If Entity is Valid and Animation are not Empty
 		if Ent:IsValid() and Animation ~= "" then
@@ -112,12 +112,13 @@ if SERVER then
 	
 	--- XML Parser by Roberto Ierusalimschy
 	local function parseargs(s)
-      local arg = {}
-      string.gsub( s, "(%w+)=([\"'])(.-)%2", function ( w, _, a )
-        arg[ w ] = a
-      end )
-      return arg
-    end
+    local arg = {}
+    string.gsub( s, "(%w+)=([\"'])(.-)%2", function ( w, _, a )
+      arg[ w ] = a
+    end )
+    
+    return arg
+  end
         
   local function parsexml(s)
       local stack = {}
