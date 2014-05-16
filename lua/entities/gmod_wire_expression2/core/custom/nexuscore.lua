@@ -23,9 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 Version: 1.3.1
-Author: Nexus [BR]
+Author: .Ż. Nexus ▪ bzg®
 Created: 05-11-2012
-Updated: 19-10-2013	03:31 PM
+Updated: 15-05-2014 09:09 PM (-03:00 GMT)
 ]]--
 
 if SERVER then
@@ -55,7 +55,7 @@ if SERVER then
 	hook.Add( "GetFallDamage", "Get Fall Damage", GetFallDamage)
 		
 	--Setup Loading Log Formatation
-	function loadingLog ( text )
+	local function loadingLog ( text )
 		--Set Max Size
 		local size = 32
 		--If Text Len < max size
@@ -111,7 +111,7 @@ if SERVER then
 	end
 	
 	--- XML Parser by Roberto Ierusalimschy
-	function parseargs(s)
+	local function parseargs(s)
       local arg = {}
       string.gsub( s, "(%w+)=([\"'])(.-)%2", function ( w, _, a )
         arg[ w ] = a
@@ -119,7 +119,7 @@ if SERVER then
       return arg
     end
         
-    function parsexml(s)
+  local function parsexml(s)
       local stack = {}
       local top = {}
       table.insert( stack, top )

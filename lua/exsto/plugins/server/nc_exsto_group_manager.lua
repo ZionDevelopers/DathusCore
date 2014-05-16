@@ -22,10 +22,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-Version: 1.3.0
-Author: Nexus [BR]
+Version: 1.3.1
+Author: .Ż. Nexus ▪ bzg®
 Created: 05-11-2012
-Updated: 09-08-2013	08:03 PM
+Updated: 15-05-2014 09:09 PM (-03:00 GMT)
 ]]--
 
 local PLUGIN = exsto.CreatePlugin()
