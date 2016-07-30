@@ -21,10 +21,11 @@
 |__| \__| |_______/__/ \__\  \______/  |_______/       |  |-.|______/  | _| `._____|.-|  |  
                                                        |____|                       
 
-		Steam Profile: http://steamcommunity.com/profiles/76561197983103320	
+@license: Attribution-NonCommercial 4.0 International - <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
+@user Steam Profile: http://steamcommunity.com/profiles/76561197983103320	
 
 Created: 05-11-2012
-Updated: 27-12-2012	08:03 PM	   
+Updated: 30-07-2016	08:03 PM	   
 */
 
 if SERVER then
