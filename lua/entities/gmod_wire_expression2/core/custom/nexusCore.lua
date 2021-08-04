@@ -952,10 +952,10 @@ if SERVER then
 			if !isAdmin then
 				-- If This is a Player
 				if !this:IsPlayer() then
-					Ent = this.player
+					local Target = this.player
 				end
 				-- Check if is Allowed
-				propProtection = ( this == self.player || E2Lib.isOwner(self, this) || E2Lib.isFriend( Ent, self.player) )
+				propProtection = ( this == self.player || E2Lib.isOwner(self, this) || E2Lib.isFriend( Target, self.player) )
 			end
 		end	
 		
