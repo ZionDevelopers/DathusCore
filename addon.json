@@ -1,8 +1,8 @@
 {
-	"title"		:	"PlayX",
+	"title"		:	"Dathus's Core",
 	"type"		:	"tool",
-	"tags"		:	[ "movie", "fun" ],
-	"description":	"PlayX is a Lua-Based Media player.",
+	"tags"		:	[ "fun" ],
+	"description":	"Dathus' Core is a library of expression 2 functions.",
 	"ignore"	:
 	[
 		"*.svn*",
@@ -15,6 +15,10 @@
 		"git-hooks-pre-commit",
 		"gitrid.sh",
 		"LICENSE",
-		"README.md"
+		"README.md",
+		"*.bat",
+		"logo.fw.png",
+		"logo.png",
+		"logo.jpg"
 	]
 }
