@@ -14,7 +14,7 @@
 		".settings*",
 		"git-hooks-pre-commit",
 		"gitrid.sh",
-		"LICENSE",
+		"LICENSE.md",
 		"README.md",
 		"*.bat",
 		"logo.fw.png",
