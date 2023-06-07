@@ -40,3 +40,8 @@ Msg( "||----------------------------------||\n" )
 loadingLog("Version " .. DathusCore.version)
 loadingLog("Updated on 2023-06-06 10:33 PM")
 Msg( "\\====================================/\n\n" )
+
+if SERVER then
+  -- Add Files to Client
+  AddCSLuaFile()
+end
