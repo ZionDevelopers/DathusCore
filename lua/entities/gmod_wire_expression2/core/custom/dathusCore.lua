@@ -1,59 +1,29 @@
-/* 
- _______   ___________    ____  _______  __        ______   .______    _______  _______     
-|       \ |   ____\   \  /   / |   ____||  |      /  __  \  |   _  \  |   ____||       \    
-|  .--.  ||  |__   \   \/   /  |  |__   |  |     |  |  |  | |  |_)  | |  |__   |  .--.  |   
-|  |  |  ||   __|   \      /   |   __|  |  |     |  |  |  | |   ___/  |   __|  |  |  |  |   
-|  '--'  ||  |____   \    /    |  |____ |  `----.|  `--'  | |  |      |  |____ |  '--'  |   
-|_______/ |_______|   \__/     |_______||_______| \______/  | _|      |_______||_______/    
-                                                                                            
-                              .______   ____    ____                                        
-                              |   _  \  \   \  /   /                                        
-                              |  |_)  |  \   \/   /                                         
-                              |   _  <    \_    _/                                          
-                              |  |_)  |     |  |                                            
-                              |______/      |__|                                            
-                                                                                            
-.__   __.  __________   ___  __    __       _______.    ____ .______   .______       ____   
-|  \ |  | |   ____\  \ /  / |  |  |  |     /       |   |    ||   _  \  |   _  \     |    |  
-|   \|  | |  |__   \  V  /  |  |  |  |    |   (----`   |  |-`|  |_)  | |  |_)  |    `-|  |  
-|  . `  | |   __|   >   <   |  |  |  |     \   \       |  |  |   _  <  |      /       |  |  
-|  |\   | |  |____ /  .  \  |  `--'  | .----)   |      |  |  |  |_)  | |  |\  \----.  |  |  
-|__| \__| |_______/__/ \__\  \______/  |_______/       |  |-.|______/  | _| `._____|.-|  |  
-                                                       |____|                       
+--[[
 
-@license: Attribution-NonCommercial 4.0 International - <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
-@user Steam Profile: http://steamcommunity.com/profiles/76561197983103320	
+Dathus' Core by Dathus [BR] is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+----------------------------------------------------------------------------------------------------------------------------
+Copyright (c) 2014 - 2023 Dathus [BR] <http://www.juliocesar.me> <http://steamcommunity.com/profiles/76561197983103320>
 
-Created: 05-11-2012
-Updated: 30-07-2016	08:03 PM	   
-*/
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+To view a copy of this license, visit <http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US> .
+----------------------------------------------------------------------------------------------------------------------------
 
-if SERVER then
+$Id$
+Version 1.3 - 2023-06-06 8:00 PM (UTC -03:00)
+
+]]--
+
+if SERVER then	
 	--Loading Messages
 	Msg( "/====================================\\\n")
-	Msg( "||     Nexus Core (E2 Functions)    ||\n" )
+	Msg( "||    Dathus' Core (E2 Functions)   ||\n" )
 	Msg( "||----------------------------------||\n" )
-	
+
 	-- Register
-	E2Lib.RegisterExtension("nexuscore", true)
+	E2Lib.RegisterExtension("dathuscore", true)
 	
 	local AntiSpamTimeout = 2
-	local FallDamageList = {}
-	
-	function GetFallDamage( ply, flFallSpeed )
-		if( FallDamageList[ply:UniqueID()] == "ENABLE" || not FallDamageList[ply:UniqueID()] ) then -- realistic fall damage is on
-			if( GetConVarNumber( "mp_falldamage" ) > 0 ) then -- realistic fall damage is on
-				return flFallSpeed * 0.225; -- near the Source SDK value
-			end
 			
-			return 10
-		elseif ( FallDamageList[ply:UniqueID()] == "DISABLE") then
-			return 0
-		end	
-	end
-
-	hook.Add("GetFallDamage", "Get Fall Damage", GetFallDamage)
-		
 	--Setup Loading Log Formatation
 	function loadingLog (text)
 		--Set Max Size
@@ -420,13 +390,13 @@ if SERVER then
 	*/
 
 	--Log Loading Message
-	loadingLog("Entity:ignite()")
+	loadingLog("Entity:ignite(Number)")
 
 	--SetUp E2 Function Cost
 	__e2setcost(50)
 
 	--Setup E2 Function
-	e2function void entity:ignite()
+	e2function void entity:ignite(number length)
 		local isAdmin = false
 		local propProtection = false
 		local Ent = this
@@ -451,7 +421,7 @@ if SERVER then
 		-- If Player is Admin or passed on Prop Protection
 		if ( isAdmin || propProtection ) then
 			--Ignite
-			this:Ignite(99999999, 0)
+			this:Ignite(length, 0)
 		end		
 	end
 
@@ -636,40 +606,6 @@ if SERVER then
 			this:Fire(input, param)
 		end
 	end
-
-	/*
-			   __       _______.  ______   .__   __. 
-		  |  |     /       | /  __  \  |  \ |  | 
-		  |  |    |   (----`|  |  |  | |   \|  | 
-	.--.  |  |     \   \    |  |  |  | |  . `  | 
-	|  `--'  | .----)   |   |  `--'  | |  |\   | 
-	 \______/  |_______/     \______/  |__| \__|
-	*/
-	
-	--Log Loading Message
-	loadingLog("tableToJson(Table)")
-	
-	--SetUp E2 Function Cost
-	__e2setcost(20)
-	
-	--Setup E2 Function
-	e2function string tableToJson(table data)
-		--If is not valid then quit
-		if type(data) != "table" then return "" end 
-		
-		--Convert Table to Json
-		return util.TableToJSON( data )
-	end
-	
-	--Log Loading Message
-	loadingLog("jsonToTable(String)")
-	
-	--Setup E2 Function
-	e2function table jsonToTable(string data)
-		if data == "" then return end
-		return util.JSONToTable(data)
-	end
-	
 	
 	/*
 		 ___      .__   __.  __  .___  ___.      ___   .___________. _______ 
@@ -836,87 +772,6 @@ if SERVER then
 		else
 			return this:LookupSequence(string.Trim(Animation)) or 0
 		end
-	end
-
-	/*
-	 _______    ___       __       __          _______       ___      .___  ___.      ___       _______  _______ 
-	|   ____|  /   \     |  |     |  |        |       \     /   \     |   \/   |     /   \     /  _____||   ____|
-	|  |__    /  ^  \    |  |     |  |        |  .--.  |   /  ^  \    |  \  /  |    /  ^  \   |  |  __  |  |__   
-	|   __|  /  /_\  \   |  |     |  |        |  |  |  |  /  /_\  \   |  |\/|  |   /  /_\  \  |  | |_ | |   __|  
-	|  |    /  _____  \  |  `----.|  `----.   |  '--'  | /  _____  \  |  |  |  |  /  _____  \ |  |__| | |  |____ 
-	|__|   /__/     \__\ |_______||_______|   |_______/ /__/     \__\ |__|  |__| /__/     \__\ \______| |_______|
-	*/
-	
-	--Log Loading Message
-	loadingLog("Entity:disableFallDamage()")
-	
-	--SetUp E2 Function Cost
-	__e2setcost(50)
-	
-	--Setup E2 Function	
-	e2function number entity:disableFallDamage()
-		local isAdmin = false
-		local propProtection = false
-		local Ent = this
-		
-		--If entity is not Valid
-		if this:IsValid() && this:IsPlayer() then
-			--If Game is Single Player then Return True
-			if game.SinglePlayer() then isAdmin = true end
-			--If is Admin quit with true
-			if self.player:IsAdmin() then isAdmin = true end
-			
-			if !isAdmin then
-				-- If This is a Player
-				if !this:IsPlayer() then
-					Ent = this.player
-				end
-				-- Check if is Allowed
-				propProtection = ( this == self.player || E2Lib.isOwner(self, this) || E2Lib.isFriend( Ent, self.player) )
-			end
-		end	
-		
-		-- If Player is Admin or passed on AntiSpam and Prop Protection
-		if ( isAdmin || propProtection ) then
-			--Apply Velocity to entity
-			FallDamageList[this:UniqueID()] = "DISABLE"
-		end			
-	end
-	
-	--Log Loading Message
-	loadingLog("Entity:enableFallDamage()")
-	
-	--SetUp E2 Function Cost
-	__e2setcost(50)
-	
-	--Setup E2 Function	
-	e2function number entity:enableFallDamage()
-		local isAdmin = false
-		local propProtection = false
-		local Ent = this
-		
-		--If entity is not Valid
-		if this:IsValid() && this:IsPlayer() then
-			--If Game is Single Player then Return True
-			if game.SinglePlayer() then isAdmin = true end
-			--If is Admin quit with true
-			if self.player:IsAdmin() then isAdmin = true end
-			
-			if !isAdmin then
-				-- If This is a Player
-				if !this:IsPlayer() then
-					Ent = this.player
-				end
-				-- Check if is Allowed
-				propProtection = ( this == self.player || E2Lib.isOwner(self, this) || E2Lib.isFriend( Ent, self.player) )
-			end
-		end	
-		
-		-- If Player is Admin or passed on AntiSpam and Prop Protection
-		if ( isAdmin || propProtection ) then
-			--Apply Velocity to entity
-			FallDamageList[this:UniqueID()] = "ENABLE"
-		end			
 	end
 	
 	/*
