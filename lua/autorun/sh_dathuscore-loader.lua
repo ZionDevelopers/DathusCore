@@ -9,14 +9,14 @@ To view a copy of this license, visit <http://creativecommons.org/licenses/by-nc
 ----------------------------------------------------------------------------------------------------------------------------
 
 $Id$
-Version 1.3 - 2023-06-06 8:00 PM (UTC -03:00)
+Version 1.3 - 2023-06-30 11:00 PM (UTC -03:00)
 
 ]]--
 
 -- Setup Class
 DathusCore = {}
 -- Dathus' Core version
-DathusCore.version = "1.3.0"
+DathusCore.version = "1.3.1"
 
 --Setup Loading Log Formatation
 function loadingLog (text)
@@ -38,7 +38,7 @@ Msg( "\n/====================================\\\n")
 Msg( "||           Dathus' Core           ||\n" )
 Msg( "||----------------------------------||\n" )
 loadingLog("Version " .. DathusCore.version)
-loadingLog("Updated on 2023-06-06 10:33 PM")
+loadingLog("Updated on 2023-06-30 11:00 PM")
 Msg( "\\====================================/\n\n" )
 
 if SERVER then

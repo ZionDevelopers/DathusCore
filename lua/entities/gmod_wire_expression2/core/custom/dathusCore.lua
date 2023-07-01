@@ -9,7 +9,7 @@ To view a copy of this license, visit <http://creativecommons.org/licenses/by-nc
 ----------------------------------------------------------------------------------------------------------------------------
 
 $Id$
-Version 1.3 - 2023-06-06 8:00 PM (UTC -03:00)
+Version 1.3 - 2023-06-30 11:00 PM (UTC -03:00)
 
 ]]--
 
